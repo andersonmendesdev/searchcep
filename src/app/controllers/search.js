@@ -14,7 +14,7 @@ const searchcep = async (req, res) =>{
     const {cep} = req.body
     const isValid = await ValidarCep(cep)
     if(!isValid){
-        return res.status(401).send({status: 401, error: 'cep invalido'})
+        return res.status(401).send({error: 'cep invalido'})
     }
     axios.get(`https://viacep.com.br/ws/${cep}/json/`)
     .then(function (response) {
@@ -25,7 +25,7 @@ const searchcep = async (req, res) =>{
             })
         }
         res.status(401).send({
-            Error: 'Cep nao existe'
+            error: 'Cep nao existe'
         })
         
     })
@@ -34,7 +34,7 @@ const searchcepId = async (req, res) => {
     const cep = req.params.id
     const isValid = await ValidarCep(cep)
     if(!isValid){
-        return res.status(401).send({status: 401, error: 'cep invalido'})
+        return res.status(401).send({error: 'cep invalido'})
     }
     axios.get(`https://viacep.com.br/ws/${cep}/json/`)
     .then(function (response) {
@@ -45,7 +45,7 @@ const searchcepId = async (req, res) => {
             })
         }
         res.status(401).send({
-            Error: 'Cep nao existe'
+            error: 'Cep nao existe'
         })
         
     })
@@ -54,7 +54,7 @@ const searchQuery = async (req, res) => {
     const cep = req.query.cep
     const isValid = await ValidarCep(cep)
     if(!isValid){
-        return res.status(401).send({status: 401, error: 'cep invalido'})
+        return res.status(401).send({error: 'cep invalido'})
     }
     axios.get(`https://viacep.com.br/ws/${cep}/json/`)
     .then(function (response) {
@@ -65,7 +65,7 @@ const searchQuery = async (req, res) => {
             })
         }
         res.status(401).send({
-            Error: 'Cep nao existe'
+            error: 'Cep nao existe'
         })
         
     })
