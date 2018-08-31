@@ -1,18 +1,9 @@
 import axios from 'axios'
-
-const ValidarCep = (cep) =>{
-    const rule = /^[0-9]{8}$/
-    const Isvalid = rule.test(cep)
-    if(Isvalid){
-        return true
-    }else{
-        return false
-    }
-}
+const rule = /^[0-9]{8}$/;
 
 const searchcep = async (req, res) =>{
     const {cep} = req.body
-    const isValid = await ValidarCep(cep)
+    const isValid = await rule.test(cep)//await ValidarCep(cep)
     if(!isValid){
         return res.status(401).send({error: 'cep invalido'})
     }
@@ -32,7 +23,7 @@ const searchcep = async (req, res) =>{
 }
 const searchcepId = async (req, res) => {
     const cep = req.params.id
-    const isValid = await ValidarCep(cep)
+    const isValid = await rule.test(cep)//await ValidarCep(cep)
     if(!isValid){
         return res.status(401).send({error: 'cep invalido'})
     }
@@ -52,7 +43,7 @@ const searchcepId = async (req, res) => {
 }
 const searchQuery = async (req, res) => {
     const cep = req.query.cep
-    const isValid = await ValidarCep(cep)
+    const isValid = await rule.test(cep)//await ValidarCep(cep)
     if(!isValid){
         return res.status(401).send({error: 'cep invalido'})
     }
