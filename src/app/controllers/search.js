@@ -17,8 +17,10 @@ const searchcep = async (req, res) =>{
         }
         res.status(401).send({
             error: 'Cep nao existe'
-        })
-        
+        })        
+    })
+    .catch( (error) => {
+        res.status(404).send({error: 'Busca inoperante'})
     })
 }
 const searchcepId = async (req, res) => {
@@ -37,8 +39,10 @@ const searchcepId = async (req, res) => {
         }
         res.status(401).send({
             error: 'Cep nao existe'
-        })
-        
+        })        
+    })
+    .catch( (error) => {
+        res.status(404).send({error: 'Busca inoperante'})
     })
 }
 const searchQuery = async (req, res) => {
@@ -57,8 +61,10 @@ const searchQuery = async (req, res) => {
         }
         res.status(401).send({
             error: 'Cep nao existe'
-        })
-        
+        })        
+    })
+    .catch( (error) => {
+        res.status(404).send({error: 'Busca inoperante'})
     })
 }
 
